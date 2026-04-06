@@ -55,11 +55,11 @@ interface ISkillItem {
 }
 
 export enum SkillTypeEnum {
-  LangAndTech = "langAndTech",
-  Libs = "libs",
-  Store = "store",
-  TestAndDocs = "testAndDocs",
-  Other = "other",
+  Core = "core",
+  Frameworks = "frameworks",
+  StateManagement = "stateManagement",
+  Testing = "testing",
+  ToolsAndBuilds = "toolsAndBuilds",
 }
 
 type SkillsConfig = Record<SkillTypeEnum, ISkillItem[]>;

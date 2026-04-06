@@ -180,7 +180,7 @@ const styles = StyleSheet.create({
   listItem: {
     display: "flex",
     flexDirection: "column",
-    gap: 3,
+    gap: 4,
   },
   listItemTitle: {
     fontSize: font.mainText,

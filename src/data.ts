@@ -64,98 +64,41 @@ export const baseData: ICvBaseData = {
     // },
   ],
   skills: {
-    [SkillTypeEnum.LangAndTech]: [
+    [SkillTypeEnum.Core]: [
       {
-        name: "JavaScript",
+        name: " JavaScript (ES6+)",
         progress: "75%",
         start: new Date("01.01.2019"),
       },
-      {
-        name: "TypeScript",
-        progress: "60%",
-        start: new Date("01.01.2019"),
-      },
-      {
-        name: "dart",
-        progress: "30%",
-        start: new Date("01.01.2025"),
-      },
-      { name: "HTML", progress: "90%", start: new Date("01.01.2019") },
-      { name: "CSS", progress: "90%", start: new Date("01.01.2019") },
-      { name: "SASS/SCSS", progress: "90%", start: new Date("01.01.2019") },
+      { name: "TypeScript", progress: "60%", start: new Date("01.01.2019") },
+      { name: "HTML5", progress: "90%", start: new Date("01.01.2019") },
+      { name: "CSS3/SASS", progress: "90%", start: new Date("01.01.2019") },
     ],
-    [SkillTypeEnum.Libs]: [
+    [SkillTypeEnum.Frameworks]: [
       { name: "ReactJS", progress: "80%", start: new Date("02.01.2020") },
       { name: "Next.js", progress: "40%", start: new Date("03.01.2022") },
       { name: "Vue.js", progress: "20%", start: new Date("04.01.2022") },
-      { name: "Flutter", progress: "30%", start: new Date("01.01.2025") },
     ],
-    [SkillTypeEnum.Store]: [
-      { name: "RTK", progress: "80%", start: new Date("02.01.2020") },
-      { name: "RTK Query", progress: "80%", start: new Date("02.01.2020") },
+    [SkillTypeEnum.StateManagement]: [
       {
-        name: "Redux Thunk",
-        progress: "75%",
+        name: "Redux (RTK, Saga)",
+        progress: "80%",
         start: new Date("02.01.2020"),
       },
-      {
-        name: "Redux Saga",
-        progress: "55%",
-        start: new Date("02.01.2021"),
-      },
-      { name: "Mobx", progress: "25%", start: new Date("02.01.2021") },
+      { name: "MobX", progress: "25%", start: new Date("02.01.2021") },
       { name: "Zustand", progress: "25%", start: new Date("02.01.2021") },
     ],
-    [SkillTypeEnum.TestAndDocs]: [
-      {
-        name: "Playwright",
-        progress: "60%",
-        start: new Date("01.10.2022"),
-      },
-      { name: "Jest", progress: "30%", start: new Date("01.02.2021") },
-      { name: "Vitest", progress: "30%", start: new Date("01.02.2021") },
-      { name: "Storybook", progress: "75%", start: new Date("05.01.2021") },
-      { name: "Creevey", progress: "70%", start: new Date("01.11.2021") },
-    ],
-    [SkillTypeEnum.Other]: [
+    [SkillTypeEnum.ToolsAndBuilds]: [
       { name: "Webpack", progress: "60%", start: new Date("01.10.2022") },
       { name: "Vite", progress: "60%", start: new Date("01.10.2022") },
-      {
-        name: "Styled-components",
-        progress: "45%",
-        start: new Date("02.01.2021"),
-      },
       { name: "Git", progress: "80%", start: new Date("05.01.2019") },
-      {
-        name: "CI/CD gitlab",
-        progress: "40%",
-        start: new Date("01.01.2022"),
-      },
-      {
-        name: "npm",
-        progress: "40%",
-        start: new Date("01.01.2021"),
-      },
-      {
-        name: "Yarn",
-        progress: "40%",
-        start: new Date("01.01.2023"),
-      },
-      {
-        name: "framer-motion",
-        progress: "40%",
-        start: new Date("01.01.2024"),
-      },
-      {
-        name: "chart.js",
-        progress: "40%",
-        start: new Date("01.01.2024"),
-      },
-      {
-        name: "comlink",
-        progress: "40%",
-        start: new Date("01.01.2024"),
-      },
+      { name: "CI/CD", progress: "40%", start: new Date("01.01.2022") },
+      { name: "Docker", progress: "40%", start: new Date("01.01.2021") },
+    ],
+    [SkillTypeEnum.Testing]: [
+      { name: "Jest", progress: "30%", start: new Date("01.02.2021") },
+      { name: "Vitest", progress: "30%", start: new Date("01.02.2021") },
+      { name: "Playwright", progress: "60%", start: new Date("01.10.2022") },
     ],
   },
   langs: [
@@ -387,25 +330,14 @@ export const data: ICvDataConfig = {
       region: "Свердловская область",
       country: "Россия",
     },
-    shortAbout:
-      `Привет! Я frontend-разработчик с опытом более ${yearsOfExperience} лет. ` +
-      "Ищу возможность работать в сложной среде, чтобы применить свои навыки и знания " +
-      "для развития компании и профессионального роста.",
+    shortAbout: `Lead Frontend-разработчик с ${yearsOfExperience}+ годами опыта. Специализируюсь на архитектуре высоконагруженных интерфейсов, оптимизации процессов разработки и менторстве.`,
     about: `Frontend-разработчик с ${yearsOfExperience}+ годами опыта создания надёжных и масштабируемых клиентских приложений. Выстраиваю прозрачную коммуникацию с заказчиками и командой, соблюдаю сроки и внедряю инженерные практики, повышающие поддерживаемость кода. Прогнозирую поведение интерфейсов, оптимизирую производительность и предотвращаю регрессии на ранних этапах. Регулярно осваиваю новые инструменты, применяя их для ускорения доставки фич без компромиссов в качестве. Готов обсудить, как мой опыт поможет вашему продукту стать стабильнее и удобнее для пользователей.`,
     education: [
       {
-        degree: "Бакалавр",
+        degree: "Высшее образование",
         fieldTitle: "Авиационные двигатели и энергетические установки",
         establishment: "Самарский Государственный Аэрокосмический Университет",
-        date: "09/2008 - 07/2012",
-        location: "Самара, Россия",
-        description: "",
-      },
-      {
-        degree: "Магистр",
-        fieldTitle: "Авиационные двигатели",
-        establishment: "Самарский Государственный Аэрокосмический Университет",
-        date: "09/2011 - 07/2014",
+        date: "09/2008 - 07/2014",
         location: "Самара, Россия",
         description: "",
       },
@@ -462,7 +394,7 @@ export const data: ICvDataConfig = {
     ],
     experience: [
       {
-        position: "Lead Senior Frontend-разработчик",
+        position: "Lead Frontend-разработчик",
         company: "СКБ Контур (Сегмент+)",
         date: "09/2024 - н.в.",
         location: "удалённо",
@@ -500,7 +432,7 @@ export const data: ICvDataConfig = {
         ],
       },
       {
-        position: "Lead Frontend - разработчик",
+        position: "Lead Frontend-разработчик",
         company: "СКБ Контур (Auto)",
         date: "01/2023 - 09/2024",
         location: "удалённо",
@@ -509,7 +441,7 @@ export const data: ICvDataConfig = {
           list: [
             "Разработал систему уведомлений на WebSocket, что улучшило реальное время общения и повысило вовлечённость пользователей на 31%.",
             "Создал настраиваемый конструктор отчётов, позволивший пользователям гибко форматировать данные, что увеличило эффективность генерации отчётов на 27%.",
-            "Реализовал адаптивный дизайн для корректного отображения на любых устройствах и размерах экранов.",
+            "Реализовал адаптивный дизайн для корректного отображения на любых устройствах и размерах экранов, что увеличило конверсию с мобильных устройств на 15%",
             "Разработал drag-and-drop компонент для работы с изображениями и создания PDF, упростив процесс управления документами.",
             "Написал тесты на Playwright для ключевых сценариев, что снизило количество багов в критическом функционале на ~20%.",
           ],

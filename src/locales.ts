@@ -38,17 +38,17 @@ export const sectionTitles: Record<LangEnum, Record<SectionKey, string>> = {
 
 export const skillsTitles: Record<LangEnum, Record<SkillTypeEnum, string>> = {
   [LangEnum.En]: {
-    [SkillTypeEnum.LangAndTech]: "Programming Languages and Web Technologies",
-    [SkillTypeEnum.Libs]: "Frameworks and Libraries",
-    [SkillTypeEnum.Store]: "State Management",
-    [SkillTypeEnum.TestAndDocs]: "Testing and Documentation",
-    [SkillTypeEnum.Other]: "Other",
+    [SkillTypeEnum.Core]: "Core",
+    [SkillTypeEnum.Frameworks]: "Frameworks",
+    [SkillTypeEnum.StateManagement]: "State Management",
+    [SkillTypeEnum.Testing]: "Testing",
+    [SkillTypeEnum.ToolsAndBuilds]: "Tools & Build",
   },
   [LangEnum.Ru]: {
-    [SkillTypeEnum.LangAndTech]: "Языки и технологии",
-    [SkillTypeEnum.Libs]: "Библиотеки и фреймворки",
-    [SkillTypeEnum.Store]: "Стейт менеджеры",
-    [SkillTypeEnum.TestAndDocs]: "Тестирование и документирование",
-    [SkillTypeEnum.Other]: "Прочее",
+    [SkillTypeEnum.Core]: "Core",
+    [SkillTypeEnum.Frameworks]: "Frameworks",
+    [SkillTypeEnum.StateManagement]: "State Management",
+    [SkillTypeEnum.Testing]: "Testing",
+    [SkillTypeEnum.ToolsAndBuilds]: "Tools & Build",
   },
 };
