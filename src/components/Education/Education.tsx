@@ -2,16 +2,21 @@ import cn from "clsx";
 import { Page } from "components/layout/Page/Page";
 import { data } from "data";
 import styles from "./Education.module.scss";
-
-const { education, courses } = data;
+import { useLangContext } from "components/providers/lang/useLangContext";
+import { sectionTitles } from "locales";
 
 export const Education = () => {
+  const { lang } = useLangContext();
+
+  const { education, courses } = data[lang];
+  const titles = sectionTitles[lang];
+
   const educationsList = [...education].reverse();
   const coursesList = [...courses].reverse();
 
   return (
     <Page id="education">
-      <h2>Education</h2>
+      <h2>{titles.education}</h2>
       <div className={styles.root}>
         {educationsList.map(({ establishment, description, degree, date }) => (
           <div key={`${establishment}-${degree}`} className={cn(styles.item)}>

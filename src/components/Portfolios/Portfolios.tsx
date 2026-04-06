@@ -4,13 +4,17 @@ import styles from "./Portfolios.module.scss";
 import Zoom from "react-medium-image-zoom";
 import "react-medium-image-zoom/dist/styles.css";
 import { TagList } from "components/shared/TagList/TagList";
-
-const { portfolios } = data;
+import { useLangContext } from "components/providers/lang/useLangContext";
+import { sectionTitles } from "locales";
 
 export const Portfolios = () => {
+  const { lang } = useLangContext();
+  const { portfolios } = data[lang];
+  const titles = sectionTitles[lang];
+
   return (
     <Page id="portfolios">
-      <h2>Portfolios</h2>
+      <h2>{titles.portfolios}</h2>
       <div className={styles.root}>
         {portfolios.map((i) => (
           <div key={i.name} className={styles.item}>

@@ -54,10 +54,15 @@ interface ISkillItem {
   start: Date;
 }
 
-interface ISkill {
-  title: string;
-  items: ISkillItem[];
+export enum SkillTypeEnum {
+  LangAndTech = "langAndTech",
+  Libs = "libs",
+  Store = "store",
+  TestAndDocs = "testAndDocs",
+  Other = "other",
 }
+
+type SkillsConfig = Record<SkillTypeEnum, ISkillItem[]>;
 
 interface ILang {
   language: string;
@@ -65,18 +70,36 @@ interface ILang {
   description: string;
 }
 
-export interface IData {
+export enum LangEnum {
+  En = "en",
+  Ru = "ru",
+}
+
+export interface ICvBaseData {
   avatar: string;
   avatarV2: string;
-  name: string;
-  positionTitle: string;
   contacts: IContact[];
+  skills: SkillsConfig;
+  langs: ILang[];
+}
+
+export interface ILocation {
+  post: string;
+  city: string;
+  region: string;
+  country: string;
+}
+
+export interface ICvData {
+  name: string;
+  location: ILocation;
+  positionTitle: string;
   shortAbout: string;
   about: string;
   education: IEducation[];
   courses: ICourse[];
   experience: IExperience[];
   portfolios: IPortfolio[];
-  skills: ISkill[];
-  langs: ILang[];
 }
+
+export type ICvDataConfig = Record<LangEnum, ICvData>;

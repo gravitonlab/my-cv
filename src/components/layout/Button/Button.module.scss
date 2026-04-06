@@ -14,8 +14,13 @@
   cursor: pointer;
   letter-spacing: 1px;
   text-transform: uppercase;
+
   &:hover {
     background-color: $second-color;
+  }
+
+  &:active {
+    background-color: $active-color;
   }
 }
 

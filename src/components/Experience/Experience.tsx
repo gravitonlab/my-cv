@@ -3,13 +3,17 @@ import { Page } from "components/layout/Page/Page";
 import { data } from "data";
 import styles from "./Experience.module.scss";
 import { TagList } from "components/shared/TagList/TagList";
-
-const { experience } = data;
+import { useLangContext } from "components/providers/lang/useLangContext";
+import { sectionTitles } from "locales";
 
 export const Experience = () => {
+  const { lang } = useLangContext();
+  const { experience } = data[lang];
+  const titles = sectionTitles[lang];
+
   return (
     <Page id="experience">
-      <h2>Experiences</h2>
+      <h2>{titles.experiences}</h2>
       <div className={styles.root}>
         {experience.map(({ company, date, description, position, skills }) => (
           <div key={company} className={cn(styles.item)}>

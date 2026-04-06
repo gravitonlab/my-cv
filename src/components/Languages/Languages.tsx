@@ -1,14 +1,19 @@
 import { Page } from "components/layout/Page/Page";
-import { data } from "data";
+import { baseData } from "data";
 import { capitalize } from "helpers/stringHelper";
 import styles from "./Languages.module.scss";
+import { useLangContext } from "components/providers/lang/useLangContext";
+import { sectionTitles } from "locales";
 
-const { langs } = data;
+const { langs } = baseData;
 
 export const Languages = () => {
+  const { lang } = useLangContext();
+  const titles = sectionTitles[lang];
+
   return (
     <Page id="languages">
-      <h2>Languages</h2>
+      <h2>{titles.languages}</h2>
       <ul className={styles.list}>
         {langs.map(({ language, level, description }) => (
           <li key={language} className={styles.item}>

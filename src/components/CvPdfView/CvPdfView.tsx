@@ -7,33 +7,23 @@ import {
   StyleSheet,
   Font,
 } from "@react-pdf/renderer";
-import { data } from "data";
-import JosefinSansRegular from "fonts/JosefinSans-Regular.ttf";
-import JosefinSansBold from "fonts/JosefinSans-Bold.ttf";
+import { baseData, data } from "data";
+import RobotoRegular from "fonts/roboto/Roboto-Regular.ttf";
+import RobotoBold from "fonts/roboto/Roboto-Bold.ttf";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { LangEnum, SkillTypeEnum } from "models";
+import { sectionTitles, skillsTitles } from "../../locales";
+import { faCity } from "@fortawesome/free-solid-svg-icons";
+import { getFullAddress } from "helpers/address.helpers";
 
-const {
-  name,
-  shortAbout,
-  positionTitle,
-  contacts,
-  experience,
-  education,
-  courses,
-  skills,
-  langs,
-} = data;
+const { contacts, langs, skills } = baseData;
 
 const socials = contacts.filter(({ title }) =>
-  ["e-mail", "linkedin", "location", "phone"].includes(title)
+  ["e-mail", "linkedin", "phone"].includes(title),
 );
 
-const filteredExperience = experience.filter(
-  (i) => !i.company.includes("SMARTEC")
-);
-
-Font.register({ family: "Josefin-Sans-Regular", src: JosefinSansRegular });
-Font.register({ family: "Josefin-Sans-Bold", src: JosefinSansBold });
+Font.register({ family: "Roboto-Regular", src: RobotoRegular });
+Font.register({ family: "Roboto-Bold", src: RobotoBold });
 
 const ColorScheme = {
   mainColor: "#15ABAB",
@@ -53,20 +43,21 @@ const colors = {
 };
 
 const sizes = {
-  pagePaddingX: "15px",
-  pagePaddingY: "20px",
-  leftContentWidth: "375px",
-  avatarSize: "80px",
-  contentSectionGap: "10px",
+  totalWidth: 550,
+  pagePaddingX: 15,
+  pagePaddingY: 20,
+  leftContentWidth: 340,
+  avatarSize: 80,
+  contentSectionGap: 10,
 };
 
 const font = {
   head1: 26,
-  head2: 16,
+  head2: 14,
   head3: 12,
-  head4: 10,
-  mainText: 10,
-  secondaryText: 10,
+  head4: 9,
+  mainText: 9,
+  secondaryText: 9,
 };
 
 const lineHeight = {
@@ -77,7 +68,7 @@ const lineHeight = {
 const styles = StyleSheet.create({
   document: { height: "100vh" },
   page: {
-    fontFamily: "Josefin-Sans-Regular",
+    fontFamily: "Roboto-Regular",
     color: colors.mainTextColor,
   },
   head: {
@@ -95,7 +86,7 @@ const styles = StyleSheet.create({
   },
   headName: {
     fontSize: font.head2,
-    fontFamily: "Josefin-Sans-Bold",
+    fontFamily: "Roboto-Bold",
     lineHeight: 1,
     color: colors.headTextColor,
     textTransform: "uppercase",
@@ -105,21 +96,24 @@ const styles = StyleSheet.create({
     color: colors.headTextColor,
   },
   headContacts: {
-    width: 450,
+    width: 550,
     fontSize: font.head4,
     display: "flex",
     flexDirection: "row",
+    justifyContent: "flex-start",
+    alignItems: "flex-start",
     flexWrap: "wrap",
-    rowGap: 4,
+    rowGap: 6,
+    columnGap: 20,
     color: colors.headTextColor,
   },
   headContactsItem: {
     display: "flex",
     flexDirection: "row",
-    gap: 2,
-    width: "calc(45% - 25px/2)",
-    alignItems: "center",
-    color: colors.headTextColor,
+    justifyContent: "flex-start",
+    // width: "calc(50% - 5px/2)",
+    // alignItems: "center",
+    // color: colors.headTextColor,
   },
   headContactsItemLink: {
     color: colors.headTextColor,
@@ -172,7 +166,7 @@ const styles = StyleSheet.create({
   },
   contentSectionTitle: {
     fontSize: font.head4,
-    fontFamily: "Josefin-Sans-Bold",
+    fontFamily: "Roboto-Bold",
     textTransform: "uppercase",
     padding: "2px 0",
     borderBottom: `2px solid ${colors.borderColor}`,
@@ -186,20 +180,26 @@ const styles = StyleSheet.create({
   listItem: {
     display: "flex",
     flexDirection: "column",
-    gap: 2,
+    gap: 3,
   },
   listItemTitle: {
     fontSize: font.mainText,
-    fontFamily: "Josefin-Sans-Bold",
+    fontFamily: "Roboto-Bold",
     color: colors.mainTextColor,
     marginBottom: 4,
   },
   listItemFieldTitle: {
     fontSize: font.mainText,
+    wordBreak: "break-word",
+    overflowWrap: "break-word",
+    flexShrink: 1,
+    minWidth: 0,
+    maxWidth: sizes.totalWidth - sizes.leftContentWidth,
   },
   listItemPlace: {
     fontSize: font.mainText,
     color: colors.secondaryTextColor,
+    maxWidth: sizes.totalWidth - sizes.leftContentWidth,
   },
   listItemDateLocation: {
     display: "flex",
@@ -272,7 +272,27 @@ const styles = StyleSheet.create({
   },
 });
 
-export const CvPdfView = () => {
+interface IProps {
+  lang?: LangEnum;
+}
+
+export const CvPdfView: React.FC<IProps> = ({ lang = LangEnum.En }) => {
+  const titles = sectionTitles[lang];
+
+  const {
+    name,
+    location,
+    shortAbout,
+    positionTitle,
+    education,
+    courses,
+    experience,
+  } = data[lang];
+
+  const filteredExperience = experience.filter(
+    (i) => !i.company.includes("SMARTEC"),
+  );
+
   return (
     <Document style={styles.document} pageMode="fullScreen" title="CV">
       <Page size="A4" style={styles.page}>
@@ -281,6 +301,10 @@ export const CvPdfView = () => {
             <Text style={styles.headName}>{name}</Text>
             <Text style={styles.headPosition}>{positionTitle}</Text>
             <View style={styles.headContacts}>
+              <View style={styles.headContactsItem}>
+                <FontAwesomeIcon icon={faCity} />
+                <Text>{getFullAddress(location)}</Text>
+              </View>
               {socials.map(({ href, value, icon }) => (
                 <View key={`${href}-${value}`} style={styles.headContactsItem}>
                   <FontAwesomeIcon icon={icon} />
@@ -301,36 +325,42 @@ export const CvPdfView = () => {
         </View>
         <View style={styles.content}>
           <View style={styles.contentSection}>
-            <Text style={styles.contentSectionTitle}>About</Text>
+            <Text style={styles.contentSectionTitle}>{titles.about}</Text>
             <Text style={styles.aboutText}>{shortAbout}</Text>
           </View>
           <View style={styles.contentSection}>
-            <Text style={styles.contentSectionTitle}>Skills</Text>
+            <Text style={styles.contentSectionTitle}>{titles.skills}</Text>
             <View style={[styles.contentSectionList, styles.skills]}>
-              {skills.map((section) => (
-                <View key={section.title} style={styles.contentSubSection}>
-                  <Text style={styles.contentSubSectionTitle}>
-                    {section.title} :
-                  </Text>
-                  <View style={styles.contentSubSectionList}>
-                    {section.items.map((i, index) => (
-                      <Text
-                        key={i.name}
-                        style={[styles.listItem, styles.skillsListItem]}
-                      >
-                        {i.name}
-                        {index < section.items.length - 1 && ","}
-                      </Text>
-                    ))}
+              {Object.entries(skills).map(([key, items]) => {
+                const skillType = key as SkillTypeEnum;
+
+                return (
+                  <View key={key} style={styles.contentSubSection}>
+                    <Text style={styles.contentSubSectionTitle}>
+                      {skillsTitles[lang][skillType]} :
+                    </Text>
+                    <View style={styles.contentSubSectionList}>
+                      {items.map((i, index) => (
+                        <Text
+                          key={i.name}
+                          style={[styles.listItem, styles.skillsListItem]}
+                        >
+                          {i.name}
+                          {index < items.length - 1 && ","}
+                        </Text>
+                      ))}
+                    </View>
                   </View>
-                </View>
-              ))}
+                );
+              })}
             </View>
           </View>
           <View style={styles.contentHorizontal}>
             <View style={styles.contentLeft}>
               <View style={styles.contentSection}>
-                <Text style={styles.contentSectionTitle}>Experiences</Text>
+                <Text style={styles.contentSectionTitle}>
+                  {titles.experiences}
+                </Text>
                 <View style={styles.contentSectionList}>
                   {filteredExperience.map(
                     ({ company, date, position, location, description }) => (
@@ -354,14 +384,16 @@ export const CvPdfView = () => {
                           </View>
                         </View>
                       </View>
-                    )
+                    ),
                   )}
                 </View>
               </View>
             </View>
             <View style={styles.contentRight}>
               <View style={styles.contentSection}>
-                <Text style={styles.contentSectionTitle}>Education</Text>
+                <Text style={styles.contentSectionTitle}>
+                  {titles.education}
+                </Text>
                 <View style={styles.contentSectionList}>
                   {education.map(
                     ({ date, degree, fieldTitle, establishment, location }) => (
@@ -381,14 +413,12 @@ export const CvPdfView = () => {
                           <Text style={styles.location}>({location})</Text>
                         </View>
                       </View>
-                    )
+                    ),
                   )}
                 </View>
               </View>
               <View style={styles.contentSection}>
-                <Text style={styles.contentSectionTitle}>
-                  Training / Courses
-                </Text>
+                <Text style={styles.contentSectionTitle}>{titles.courses}</Text>
                 <View style={styles.contentSectionList}>
                   {courses.map(
                     ({
@@ -431,23 +461,30 @@ export const CvPdfView = () => {
                           )}
                         </View>
                       </View>
-                    )
+                    ),
                   )}
                 </View>
               </View>
-              <View style={styles.contentSection}>
-                <Text style={styles.contentSectionTitle}>Languages</Text>
-                <View style={[styles.contentSectionList, styles.languagesList]}>
-                  {langs.map((l) => (
-                    <Text
-                      key={l.language}
-                      style={styles.contentSubSectionListItem}
-                    >
-                      {l.language} - {l.level}
-                    </Text>
-                  ))}
+
+              {lang === LangEnum.En && (
+                <View style={styles.contentSection}>
+                  <Text style={styles.contentSectionTitle}>
+                    {titles.languages}
+                  </Text>
+                  <View
+                    style={[styles.contentSectionList, styles.languagesList]}
+                  >
+                    {langs.map((l) => (
+                      <Text
+                        key={l.language}
+                        style={styles.contentSubSectionListItem}
+                      >
+                        {l.language} - {l.level}
+                      </Text>
+                    ))}
+                  </View>
                 </View>
-              </View>
+              )}
             </View>
           </View>
         </View>

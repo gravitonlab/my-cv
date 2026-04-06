@@ -2,9 +2,12 @@ import cn from "clsx";
 import { faBars, faTimes } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { capitalize } from "helpers/stringHelper";
-import { data } from "data";
+import { baseData, data } from "data";
 import styles from "./Header.module.scss";
 import { useEffect, useState } from "react";
+import { useLangContext } from "components/providers/lang/useLangContext";
+import Toggle from "../Toggle/Toggle";
+import { LangEnum } from "models";
 
 const MENU = [
   "about",
@@ -27,9 +30,15 @@ function scrollToTargetAdjusted(element: Element | null) {
   }
 }
 
-const { avatar, name } = data;
+const { avatar } = baseData;
 
-export const Header = () => {
+interface IProps {
+  onSwitchLang: () => void;
+}
+
+export const Header: React.FC<IProps> = ({ onSwitchLang }) => {
+  const { lang } = useLangContext();
+  const { name } = data[lang];
   const defaultStyle = { transform: "translateX(-105%)" };
   const [showMobileMenu, setShowMobileMenu] = useState<boolean>(false);
   const [styleMenu, setStyleMenu] = useState(defaultStyle);
@@ -66,6 +75,14 @@ export const Header = () => {
           </li>
         );
       })}
+      <div style={{ width: 120, display: "flex", justifyContent: "center" }}>
+        <Toggle
+          checked={lang === LangEnum.En}
+          label={lang}
+          labelPosition="right"
+          onChange={onSwitchLang}
+        />
+      </div>
     </ul>
   );
 

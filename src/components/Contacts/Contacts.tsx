@@ -1,16 +1,31 @@
 import { Page } from "components/layout/Page/Page";
-import { data } from "data";
+import { baseData, data } from "data";
 import { capitalize } from "helpers/stringHelper";
 import styles from "./Contacts.module.scss";
+import { sectionTitles } from "locales";
+import { getFullAddress } from "helpers/address.helpers";
+import { useLangContext } from "components/providers/lang/useLangContext";
 
-const { contacts, avatar } = data;
+const { contacts, avatar } = baseData;
 
 export const Contacts = () => {
+  const { lang } = useLangContext();
+  const { location } = data[lang];
+  const titles = sectionTitles[lang];
+
   return (
     <Page id="contacts">
-      <h2>Contacts</h2>
+      <h2>{titles.contacts}</h2>
       <div className={styles.root}>
         <ul className={styles.items}>
+          <li className={styles.item}>
+            <span className={styles.item__name}>
+              {capitalize(sectionTitles[lang].location)}:{" "}
+            </span>
+            <span className={styles.item__value}>
+              {getFullAddress(location)}
+            </span>
+          </li>
           {contacts.map(({ title, value, href }) => (
             <li key={title} className={styles.item}>
               <span className={styles.item__name}>{capitalize(title)}: </span>

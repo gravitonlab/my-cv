@@ -1,23 +1,31 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Page } from "components/layout/Page/Page";
 import { Button } from "components/layout/Button/Button";
-import { data } from "data";
+import { baseData, data } from "data";
 import { useNavigate } from "react-router-dom";
 import styles from "./About.module.scss";
 import { PDFDownloadLink } from "@react-pdf/renderer";
 import { CvPdfView } from "components/CvPdfView/CvPdfView";
+import { useLangContext } from "components/providers/lang/useLangContext";
+import { LangEnum } from "models";
 
-const { avatar, name, positionTitle: position, contacts, about } = data;
+const { avatar, contacts } = baseData;
 
 const socials = contacts.filter(({ title }) =>
-  ["e-mail", "telegram", "whatsapp", "facebook", "linkedin"].includes(title)
+  ["e-mail", "telegram", "whatsapp", "facebook", "linkedin"].includes(title),
 );
 
 export const About = () => {
+  const { lang } = useLangContext();
+
+  const { name, positionTitle: position, about } = data[lang];
+
   const navigate = useNavigate();
 
+  const isEng = lang === LangEnum.En;
+
   const goToCvPage = () => {
-    navigate("/cv-pdf");
+    navigate(isEng ? "/cv-pdf" : "/cv-pdf-ru");
   };
 
   return (
@@ -52,14 +60,16 @@ export const About = () => {
         </div>
         <div className={styles.btnWrapper}>
           <PDFDownloadLink
-            document={<CvPdfView />}
+            document={<CvPdfView lang={lang} />}
             fileName={`CV_${name.replace(" ", "_")}`}
             className={styles.pdfDownloadLink}
           >
-            {({ loading }) => (loading ? "Loading..." : "Download CV")}
+            {({ loading }) =>
+              loading ? "Loading..." : isEng ? "Download CV" : "Скачать CV"
+            }
           </PDFDownloadLink>
-          <Button id="open_pdv" onClick={goToCvPage}>
-            Open CV Page
+          <Button id="open_pdf" onClick={goToCvPage}>
+            {isEng ? "Open CV Page" : "Посмотреть CV"}
           </Button>
         </div>
       </div>
