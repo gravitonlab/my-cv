@@ -46,18 +46,18 @@ const sizes = {
   totalWidth: 550,
   pagePaddingX: 15,
   pagePaddingY: 20,
-  leftContentWidth: 340,
+  leftContentWidth: 400,
   avatarSize: 80,
   contentSectionGap: 10,
 };
 
 const font = {
   head1: 26,
-  head2: 14,
-  head3: 12,
-  head4: 9,
+  head2: 12,
+  head3: 11,
+  head4: 8,
   mainText: 9,
-  secondaryText: 9,
+  secondaryText: 8,
 };
 
 const lineHeight = {
@@ -82,7 +82,7 @@ const styles = StyleSheet.create({
   headInfo: {
     display: "flex",
     flexDirection: "column",
-    gap: 10,
+    gap: 8,
   },
   headName: {
     fontSize: font.head2,
@@ -103,7 +103,7 @@ const styles = StyleSheet.create({
     justifyContent: "flex-start",
     alignItems: "flex-start",
     flexWrap: "wrap",
-    rowGap: 6,
+    rowGap: 4,
     columnGap: 20,
     color: colors.headTextColor,
   },
@@ -140,7 +140,7 @@ const styles = StyleSheet.create({
   contentHorizontal: {
     display: "flex",
     flexDirection: "row",
-    gap: "15px",
+    gap: 15,
   },
   aboutText: {
     fontSize: font.mainText,
@@ -207,6 +207,7 @@ const styles = StyleSheet.create({
     gap: 4,
     color: colors.thirdTextColor,
     fontSize: font.mainText,
+    fontFamily: "Roboto-Regular",
   },
   date: {
     display: "flex",
@@ -237,7 +238,7 @@ const styles = StyleSheet.create({
     display: "flex",
     flexDirection: "row",
     lineHeight: 0.5,
-    gap: "10px",
+    gap: 10,
   },
   contentSubSectionTitle: {
     fontSize: font.mainText,
@@ -248,7 +249,7 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: "row",
     flexWrap: "wrap",
-    gap: "8px",
+    gap: 8,
     fontSize: font.secondaryText,
   },
   contentSubSectionListItem: {
@@ -258,8 +259,8 @@ const styles = StyleSheet.create({
   skills: {
     display: "flex",
     flexDirection: "column",
-    gap: "10px",
-    marginBottom: "8px",
+    gap: 8,
+    marginBottom: 4,
   },
   skillsListItem: {
     display: "flex",

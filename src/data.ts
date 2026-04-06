@@ -75,6 +75,11 @@ export const baseData: ICvBaseData = {
         progress: "60%",
         start: new Date("01.01.2019"),
       },
+      {
+        name: "dart",
+        progress: "30%",
+        start: new Date("01.01.2025"),
+      },
       { name: "HTML", progress: "90%", start: new Date("01.01.2019") },
       { name: "CSS", progress: "90%", start: new Date("01.01.2019") },
       { name: "SASS/SCSS", progress: "90%", start: new Date("01.01.2019") },
@@ -83,6 +88,7 @@ export const baseData: ICvBaseData = {
       { name: "ReactJS", progress: "80%", start: new Date("02.01.2020") },
       { name: "Next.js", progress: "40%", start: new Date("03.01.2022") },
       { name: "Vue.js", progress: "20%", start: new Date("04.01.2022") },
+      { name: "Flutter", progress: "30%", start: new Date("01.01.2025") },
     ],
     [SkillTypeEnum.Store]: [
       { name: "RTK", progress: "80%", start: new Date("02.01.2020") },
@@ -135,6 +141,21 @@ export const baseData: ICvBaseData = {
         progress: "40%",
         start: new Date("01.01.2023"),
       },
+      {
+        name: "framer-motion",
+        progress: "40%",
+        start: new Date("01.01.2024"),
+      },
+      {
+        name: "chart.js",
+        progress: "40%",
+        start: new Date("01.01.2024"),
+      },
+      {
+        name: "comlink",
+        progress: "40%",
+        start: new Date("01.01.2024"),
+      },
     ],
   },
   langs: [
@@ -154,7 +175,7 @@ export const baseData: ICvBaseData = {
 export const data: ICvDataConfig = {
   [LangEnum.En]: {
     name: "Azad MAMEDOV",
-    positionTitle: "Senior Frontend Developer",
+    positionTitle: "Frontend Developer",
     location: {
       post: "",
       city: "Yekaterinburg",
@@ -327,7 +348,7 @@ export const data: ICvDataConfig = {
           "organized by genre and alphabetically. Users can easily search " +
           "for sheet music by title or author, making it an ideal destination " +
           "for pianists of all levels",
-        repoLink: "https://github.com/azad-source/achord.ru",
+        repoLink: "https://github.com/gravitonlab/achord.ru",
         stackList: [
           "ReactJs",
           "Typescript",
@@ -339,14 +360,14 @@ export const data: ICvDataConfig = {
       },
       {
         name: "Furniro",
-        demoLink: "https://azad-source.github.io/furniro/",
+        demoLink: "https://gravitonlab.github.io/furniro/",
         image: portfolio_furniro,
         description:
           "Furniro is an online store where you can order furniture, explore " +
           "interior designs, and choose your preferred style. " +
           "It offers a seamless shopping experience with a wide " +
           "range of options to fit any aesthetic.",
-        repoLink: "https://github.com/azad-source/furniro",
+        repoLink: "https://github.com/gravitonlab/furniro",
         stackList: [
           "ReactJs",
           "Typescript",
@@ -359,7 +380,7 @@ export const data: ICvDataConfig = {
   },
   [LangEnum.Ru]: {
     name: "Мамедов Азад Чингиз оглы",
-    positionTitle: "Ведущий Frontend-разработчик",
+    positionTitle: "Frontend",
     location: {
       post: "",
       city: "Екатеринбург",
@@ -370,14 +391,7 @@ export const data: ICvDataConfig = {
       `Привет! Я frontend-разработчик с опытом более ${yearsOfExperience} лет. ` +
       "Ищу возможность работать в сложной среде, чтобы применить свои навыки и знания " +
       "для развития компании и профессионального роста.",
-    about:
-      `У меня более ${yearsOfExperience} лет опыта в веб-разработке. Мне нравится работать с клиентами, ` +
-      "обеспечивая высокое качество сервиса и оперативные ответы. " +
-      "Я люблю изучать новые технологии, находить эффективные решения и расти как профессионал. " +
-      "Работа с разнообразными инструментами помогает мне применять проверенные практики, " +
-      "предсказывать поведение приложения и предотвращать ошибки. " +
-      "Свяжитесь со мной, если вам нужен надёжный и опытный разработчик. " +
-      "Давайте сделаем это!",
+    about: `Frontend-разработчик с ${yearsOfExperience}+ годами опыта создания надёжных и масштабируемых клиентских приложений. Выстраиваю прозрачную коммуникацию с заказчиками и командой, соблюдаю сроки и внедряю инженерные практики, повышающие поддерживаемость кода. Прогнозирую поведение интерфейсов, оптимизирую производительность и предотвращаю регрессии на ранних этапах. Регулярно осваиваю новые инструменты, применяя их для ускорения доставки фич без компромиссов в качестве. Готов обсудить, как мой опыт поможет вашему продукту стать стабильнее и удобнее для пользователей.`,
     education: [
       {
         degree: "Бакалавр",
@@ -416,7 +430,7 @@ export const data: ICvDataConfig = {
       },
       {
         degree: "",
-        establishment: "Крэш-курсы Контур (буткамп)",
+        establishment: "Крэш-курсы Контур",
         date: "",
         location: "г. Екатеринбург (компания СКБ Контур)",
         description: {
@@ -448,9 +462,47 @@ export const data: ICvDataConfig = {
     ],
     experience: [
       {
-        position: "Ведущий Frontend-разработчик",
+        position: "Lead Senior Frontend-разработчик",
+        company: "СКБ Контур (Сегмент+)",
+        date: "09/2024 - н.в.",
+        location: "удалённо",
+        description: {
+          title: "Достижения в проекте Сегмент+:",
+          list: [
+            "Фич-лид направления «Администрирование и онбординг»: полное сопровождение фичи от сбора требований до релиза",
+            "Организовал процесс выявления требований «с нуля» при отсутствии аналитики: проводил воркшопы с PM, дизайнерами и бэкендом",
+            "Спроектировал и реализовал единый флоу онбординга: админ-панель, настройки ЛК, welcome-страница",
+            "Разработал админ-панель для команды внедрения: управление организациями, пользователями и правами доступа",
+            "Реализовал раздел настроек ЛК: конфигурация каналов (WhatsApp/Telegram), филиалов и подключенных аккаунтов",
+            "Создал архитектуру на моках для параллельной разработки, что позволило не блокировать фронтенд в ожидании бэкенда",
+            "Принимал продуктовые решения по приоритизации скоупа для соблюдения дедлайнов (MVP-подход)",
+            "Адаптировал фронтенд-архитектуру под меняющиеся ограничения бэкенда и API-контрактов",
+            "Обеспечил успешный релиз: прошел фронтенд-аудит, настроил окружения (cloud/prod/test) с DevOps, провел e2e-тестирование и выполнил деплой продукта в продакшен",
+          ],
+        },
+        skills: [
+          "ReactJS",
+          "TypeScript",
+          "JavaScript",
+          "vite",
+          "SASS/SCSS",
+          "Redux Tool Kit",
+          "react-hook-form",
+          "zod v3/v4",
+          "framer-motion",
+          "chart.js",
+          "gitlab ci/cd",
+          "Storybook",
+          "Playwright",
+          "Vitest",
+          "Yarn / monorepo",
+          "figma",
+        ],
+      },
+      {
+        position: "Lead Frontend - разработчик",
         company: "СКБ Контур (Auto)",
-        date: "01/2023 - н.в.",
+        date: "01/2023 - 09/2024",
         location: "удалённо",
         description: {
           title: "Достижения в проекте Auto:",
@@ -478,7 +530,6 @@ export const data: ICvDataConfig = {
           "Jest",
           "Yarn",
           "figma",
-          "YouTrack",
         ],
       },
       {
@@ -509,7 +560,6 @@ export const data: ICvDataConfig = {
           "Jest",
           "Creevey",
           "figma",
-          "YouTrack",
         ],
       },
       {
@@ -549,7 +599,7 @@ export const data: ICvDataConfig = {
           "организованными по жанрам и в алфавитном порядке. Пользователи могут легко искать " +
           "ноты по названию или автору, что делает его идеальным местом " +
           "для пианистов любого уровня",
-        repoLink: "https://github.com/azad-source/achord.ru",
+        repoLink: "https://github.com/gravitonlab/achord.ru",
         stackList: [
           "ReactJs",
           "Typescript",
@@ -561,14 +611,14 @@ export const data: ICvDataConfig = {
       },
       {
         name: "Furniro",
-        demoLink: "https://azad-source.github.io/furniro/",
+        demoLink: "https://gravitonlab.github.io/furniro/",
         image: portfolio_furniro,
         description:
           "Furniro — интернет-магазин мебели, где можно заказать мебель, изучить " +
           "дизайны интерьеров и выбрать предпочтительный стиль. " +
           "Платформа предлагает удобный шоппинг с широким " +
           "выбором вариантов под любую эстетику.",
-        repoLink: "https://github.com/azad-source/furniro",
+        repoLink: "https://github.com/gravitonlab/furniro",
         stackList: [
           "ReactJs",
           "Typescript",
