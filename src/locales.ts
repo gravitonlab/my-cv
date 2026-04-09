@@ -1,6 +1,6 @@
 import { LangEnum, SkillTypeEnum } from "models";
 
-type SectionKey =
+export type SectionKeyType =
   | "about"
   | "skills"
   | "experiences"
@@ -11,7 +11,7 @@ type SectionKey =
   | "contacts"
   | "portfolios";
 
-export const sectionTitles: Record<LangEnum, Record<SectionKey, string>> = {
+export const sectionTitles: Record<LangEnum, Record<SectionKeyType, string>> = {
   [LangEnum.En]: {
     about: "About",
     skills: "Skills",

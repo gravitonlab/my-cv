@@ -8,10 +8,11 @@ import { useEffect, useState } from "react";
 import { useLangContext } from "components/providers/lang/useLangContext";
 import Toggle from "../Toggle/Toggle";
 import { LangEnum } from "models";
+import { SectionKeyType, sectionTitles } from "locales";
 
-const MENU = [
+const MENU: SectionKeyType[] = [
   "about",
-  "experience",
+  "experiences",
   "education",
   "portfolios",
   "skills",
@@ -39,6 +40,9 @@ interface IProps {
 export const Header: React.FC<IProps> = ({ onSwitchLang }) => {
   const { lang } = useLangContext();
   const { name } = data[lang];
+
+  const titles = sectionTitles[lang];
+
   const defaultStyle = { transform: "translateX(-105%)" };
   const [showMobileMenu, setShowMobileMenu] = useState<boolean>(false);
   const [styleMenu, setStyleMenu] = useState(defaultStyle);
@@ -66,7 +70,9 @@ export const Header: React.FC<IProps> = ({ onSwitchLang }) => {
   const menuList = (
     <ul>
       {MENU.map((item) => {
-        const itemName = capitalize(item);
+        const title = titles?.[item] || item;
+
+        const itemName = capitalize(title);
         return (
           <li key={item}>
             <a href={`#${item}`} title={itemName} onClick={handleScrollTo}>

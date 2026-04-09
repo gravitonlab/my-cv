@@ -323,7 +323,7 @@ export const data: ICvDataConfig = {
   },
   [LangEnum.Ru]: {
     name: "Мамедов Азад Чингиз оглы",
-    positionTitle: "Frontend",
+    positionTitle: "Frontend-разработчик",
     location: {
       post: "",
       city: "Екатеринбург",
