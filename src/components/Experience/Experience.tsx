@@ -12,7 +12,7 @@ export const Experience = () => {
   const titles = sectionTitles[lang];
 
   return (
-    <Page id="experience">
+    <Page id="experiences">
       <h2>{titles.experiences}</h2>
       <div className={styles.root}>
         {experience.map(({ company, date, description, position, skills }) => (
